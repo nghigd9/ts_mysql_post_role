@@ -1,16 +1,17 @@
 import { Sequelize } from "sequelize-typescript";
-import { Todos } from "../models/todos";
-
+import {Post} from "../models/posts";
+import { User } from "../models/user";
+const Port:number = Number(process.env.DB_PORT);
 
 const connection = new Sequelize(
     {
-        dialect : "mysql",
-    host: "localhost",
-    port: 3306,
-    username : "root",
-    password : "",
-    database : "st_todos",
-    models : [Todos]
+    dialect : "mysql",
+    host: process.env.DB_HOST,
+    port: Port,
+    username : process.env.DB_USERNAME,
+    password : process.env.DB_PASSWORD,
+    database : process.env.DB_NAME,
+    models : [ Post, User]
     }
 )
 
